@@ -1,5 +1,5 @@
 # SENTINEL
-Smart Edge Node Telemetry Intelligence & Network Embedded Lighting
+**S**mart **E**dge **N**ode **T**elemetry **I**ntelligence & **N**etwork **E**mbedded **L**ighting
 
 # STAGE 1
 
