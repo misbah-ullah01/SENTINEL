@@ -1,2 +1,5 @@
 PROJ_NAME.txt
 /Instructions
+*package-lock.json
+*package.json
+*node_modules
