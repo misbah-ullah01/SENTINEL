@@ -88,6 +88,29 @@ cd smart-light-stage1/backend
 npm init -y
 npm install express cors serialport @serialport/parser-readline
 ```
+---
+### 3.2 File: `backend/package.json`
+
+After `npm init -y`, ensure `"main"` points to `"server.js"`. Add a start script:
+
+```json
+{
+  "name": "smart-light-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^12.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "serialport": "^12.0.0"
+  }
+}
+```
+---
 
 ## 4. Frontend
 
