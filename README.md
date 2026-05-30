@@ -1,3 +1,5 @@
+<img width="2796" height="1224" alt="Banner_No_Background_White" src="https://github.com/user-attachments/assets/1ab0029f-5354-4603-8b00-82816495e524" />
+
 # SENTINEL
 **S**mart **E**dge **N**ode **T**elemetry **I**ntelligence & **N**etwork **E**mbedded **L**ighting
 
