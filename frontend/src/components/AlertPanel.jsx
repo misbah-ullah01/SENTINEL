@@ -1,14 +1,14 @@
 /**
  * AlertPanel
- * Displays the last 20 fault events from backend memory.
+ * Displays the last 20 issue events from backend memory.
  * Props: { events }  — array of { timestamp, type }
  */
 
 import React from "react";
 
 const EVENT_CONFIG = {
-    FAULT_DETECTED: { label: "Fault Detected", color: "#ef4444", icon: "⚠" },
-    FAULT_CLEARED: { label: "Fault Cleared", color: "#22c55e", icon: "✓" },
+    FAULT_DETECTED: { label: "Issue Detected", color: "#f59e0b", icon: "!" },
+    FAULT_CLEARED: { label: "Issue Cleared", color: "#22c55e", icon: "✓" },
 };
 
 function formatTime(iso) {
@@ -38,20 +38,20 @@ export default function AlertPanel({ events = [] }) {
                 justifyContent: "space-between",
             }}>
                 <span style={{
-                    fontSize: "10px",
+                    fontSize: "12px",
                     color: "var(--color-text-muted)",
                     fontFamily: "var(--font-mono)",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                 }}>
-                    Fault History
+                    Issue History
                 </span>
                 <span style={{
-                    background: events.length > 0 ? "var(--color-red-dim)" : "var(--color-surface-2)",
-                    color: events.length > 0 ? "var(--color-red)" : "var(--color-text-muted)",
+                    background: events.length > 0 ? "rgba(245,158,11,0.12)" : "var(--color-surface-2)",
+                    color: events.length > 0 ? "#f59e0b" : "var(--color-text-muted)",
                     borderRadius: "999px",
-                    fontSize: "10px",
-                    padding: "2px 8px",
+                    fontSize: "12px",
+                    padding: "4px 10px",
                     fontFamily: "var(--font-mono)",
                     fontWeight: 700,
                 }}>
@@ -69,10 +69,10 @@ export default function AlertPanel({ events = [] }) {
                     <div style={{
                         textAlign: "center",
                         color: "var(--color-text-muted)",
-                        fontSize: "12px",
+                        fontSize: "13px",
                         fontFamily: "var(--font-mono)",
                     }}>
-                        No fault events recorded
+                        No issue events recorded
                     </div>
                 ) : (
                     events.map((ev, i) => {

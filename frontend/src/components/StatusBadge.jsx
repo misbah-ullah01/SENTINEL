@@ -11,13 +11,13 @@ const CONFIG = {
     ON: { label: "ONLINE", color: "#22c55e", bg: "rgba(34,197,94,0.12)", dot: "#22c55e" },
     OFF: { label: "OFFLINE", color: "#64748b", bg: "rgba(100,116,139,0.12)", dot: "#64748b" },
     FAULT: { label: "FAULT", color: "#ef4444", bg: "rgba(239,68,68,0.12)", dot: "#ef4444" },
-    UNKNOWN: { label: "UNKNOWN", color: "#f59e0b", bg: "rgba(245,158,11,0.12)", dot: "#f59e0b" },
+    UNKNOWN: { label: "UNKNOWN", color: "#94a3b8", bg: "rgba(148,163,184,0.12)", dot: "#94a3b8" },
 };
 
 const SIZES = {
-    sm: { fontSize: "10px", padding: "2px 8px", dotSize: "6px" },
-    md: { fontSize: "11px", padding: "4px 10px", dotSize: "8px" },
-    lg: { fontSize: "13px", padding: "6px 14px", dotSize: "10px" },
+    sm: { fontSize: "12px", padding: "4px 10px", dotSize: "7px" },
+    md: { fontSize: "13px", padding: "5px 12px", dotSize: "8px" },
+    lg: { fontSize: "14px", padding: "7px 16px", dotSize: "10px" },
 };
 
 export default function StatusBadge({ status = "UNKNOWN", size = "md" }) {
@@ -39,7 +39,7 @@ export default function StatusBadge({ status = "UNKNOWN", size = "md" }) {
             fontSize: sz.fontSize,
             fontFamily: "var(--font-mono)",
             fontWeight: 600,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.06em",
             userSelect: "none",
         }}>
             <span style={{

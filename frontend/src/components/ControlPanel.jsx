@@ -31,13 +31,13 @@ export default function ControlPanel({ status, onTurnOn, onTurnOff, disabled }) 
         borderRadius: "var(--radius-md)",
         border: "1px solid transparent",
         fontFamily: "var(--font-mono)",
-        fontSize: "12px",
+        fontSize: "13px",
         fontWeight: 700,
         letterSpacing: "0.1em",
         cursor: disabled ? "not-allowed" : "pointer",
         transition: "all var(--transition)",
         opacity: disabled ? 0.4 : 1,
-        minWidth: "130px",
+        minWidth: "140px",
     };
 
     return (
@@ -48,14 +48,14 @@ export default function ControlPanel({ status, onTurnOn, onTurnOff, disabled }) 
             padding: "24px",
         }}>
             <div style={{
-                fontSize: "10px",
+                fontSize: "12px",
                 color: "var(--color-text-muted)",
                 fontFamily: "var(--font-mono)",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 marginBottom: "16px",
             }}>
-                Remote Control
+                Live Control
             </div>
 
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
@@ -93,22 +93,22 @@ export default function ControlPanel({ status, onTurnOn, onTurnOff, disabled }) 
             {isFault && (
                 <div style={{
                     marginTop: "12px",
-                    fontSize: "11px",
-                    color: "var(--color-red)",
+                    fontSize: "13px",
+                    color: "#f59e0b",
                     fontFamily: "var(--font-mono)",
                 }}>
-                    ⚠ Fault active — commands still relay to Arduino
+                    ! Issue active — commands still relay to Arduino
                 </div>
             )}
 
             {disabled && (
                 <div style={{
                     marginTop: "12px",
-                    fontSize: "11px",
+                    fontSize: "13px",
                     color: "var(--color-yellow)",
                     fontFamily: "var(--font-mono)",
                 }}>
-                    ⚠ Backend unreachable — check server on port 5000
+                    ! Backend unreachable — check server on port 5000
                 </div>
             )}
         </div>

@@ -10,14 +10,14 @@ import StatusBadge from "./StatusBadge";
 const BORDER_COLOR = {
     ON: "#22c55e",
     OFF: "#1e2d45",
-    FAULT: "#ef4444",
+    FAULT: "#f59e0b",
     UNKNOWN: "#f59e0b",
 };
 
 export default function PoleCard({ poleData }) {
-    const { status, poleId, location, power, voltage, current, energy, temperature, uptime } = poleData;
+    const { status, poleId, nodeId, nodeLabel, sector, location, power, voltage, current, energy, temperature, uptime } = poleData;
     const border = BORDER_COLOR[status] ?? BORDER_COLOR.UNKNOWN;
-    const isFault = status === "FAULT";
+    const isIssue = status === "FAULT";
 
     const rows = [
         { key: "Power", val: power },
@@ -35,8 +35,8 @@ export default function PoleCard({ poleData }) {
             borderRadius: "var(--radius-lg)",
             overflow: "hidden",
             transition: "border-color 400ms ease",
-            boxShadow: isFault
-                ? "0 0 30px rgba(239,68,68,0.15), 0 0 60px rgba(239,68,68,0.06)"
+            boxShadow: isIssue
+                ? "0 0 30px rgba(245,158,11,0.15), 0 0 60px rgba(245,158,11,0.06)"
                 : status === "ON"
                     ? "0 0 30px rgba(34,197,94,0.08)"
                     : "none",
@@ -53,13 +53,25 @@ export default function PoleCard({ poleData }) {
             }}>
                 <div>
                     <div style={{
-                        fontSize: "11px",
+                        fontSize: "12px",
                         color: "var(--color-text-muted)",
                         fontFamily: "var(--font-mono)",
                         marginBottom: "2px",
                     }}>
                         {poleId}
                     </div>
+                    {(sector || nodeId || nodeLabel) && (
+                        <div style={{
+                            fontSize: "12px",
+                            color: "var(--color-text-dim)",
+                            fontFamily: "var(--font-mono)",
+                            marginBottom: "4px",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                        }}>
+                            {[sector, nodeId, nodeLabel].filter(Boolean).join(" • ")}
+                        </div>
+                    )}
                     <div style={{ fontSize: "15px", fontWeight: 600, color: "var(--color-text)" }}>
                         {location}
                     </div>
@@ -80,7 +92,7 @@ export default function PoleCard({ poleData }) {
                         padding: "14px 16px",
                     }}>
                         <div style={{
-                            fontSize: "10px",
+                            fontSize: "12px",
                             color: "var(--color-text-muted)",
                             fontFamily: "var(--font-mono)",
                             textTransform: "uppercase",
@@ -101,28 +113,21 @@ export default function PoleCard({ poleData }) {
                 ))}
             </div>
 
-            {/* Fault Banner */}
-            {isFault && (
+            {/* Issue Banner */}
+                        {isIssue && (
                 <div style={{
                     padding: "10px 20px",
-                    background: "var(--color-red-dim)",
-                    borderTop: "1px solid rgba(239,68,68,0.3)",
-                    color: "var(--color-red)",
-                    fontSize: "12px",
+                                        background: "rgba(245,158,11,0.12)",
+                                        borderTop: "1px solid rgba(245,158,11,0.3)",
+                                        color: "#f59e0b",
+                                        fontSize: "13px",
                     fontFamily: "var(--font-mono)",
                     fontWeight: 600,
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    animation: "fault-flash 1.2s ease-in-out infinite",
                 }}>
-                    ⚠ FAULT DETECTED - Check physical LED and fault wire connection
-                    <style>{`
-            @keyframes fault-flash {
-              0%, 100% { opacity: 1; }
-              50%       { opacity: 0.6; }
-            }
-          `}</style>
+                                        ! Attention detected - check physical LED and connection
                 </div>
             )}
         </div>
